@@ -1,0 +1,79 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace oroklodes
+{
+
+    public class Kutyak
+    {
+
+        public string Nev;
+        public int tomeg;
+
+        public Kutyak(string neve, int suly) {
+                
+                this.Nev = neve;    
+                this.tomeg = suly;
+        
+        }
+
+    }
+
+    public class Tacsko : Kutyak {
+        public Tacsko(string neve, int suly) : base(neve, suly)
+        {
+        }
+
+        public double Atlag(List<int> tomegek)
+        {
+            var db = tomegek.Count;
+            var ossz_tomeg = 0;
+            
+            foreach (var i in tomegek)
+            {
+                ossz_tomeg += i;
+            }
+            var atlag = ossz_tomeg / db;
+
+            return atlag;
+        }
+
+
+    }
+
+
+
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            Kutyak a = new Kutyak("Tacskó",3);
+
+            //Console.WriteLine("{0}",a.Nev);
+
+
+            Tacsko t1 = new Tacsko("Törpe", 2);
+            Tacsko t2 = new Tacsko("Rozsdás", 3);
+            Tacsko t3 = new Tacsko("Hosszú", 4);
+            
+            List<int> list = new List<int>(); 
+            List<Tacsko> osszes_tacsko = new List<Tacsko>();
+
+            osszes_tacsko.Add(t1);
+            osszes_tacsko.Add(t2);
+            osszes_tacsko.Add(t3);
+
+            foreach (var item in osszes_tacsko)
+            {
+                Console.WriteLine("{0}",item.Nev);
+            }
+
+
+
+            Console.ReadLine();
+        }
+    }
+}
